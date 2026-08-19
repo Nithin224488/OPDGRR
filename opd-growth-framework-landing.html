@@ -1,1242 +1,1392 @@
-<style>
-  .gf-wrap {
-    --bg: #050a1c;
-    --bg-panel: #0b1330;
-    --bg-panel-2: #101a3d;
-    --border: rgba(255, 255, 255, 0.08);
-    --text: #f4f6fb;
-    --text-dim: #a8b0c8;
-    --accent: #25d366;
-    --accent-dim: rgba(37, 211, 102, 0.14);
-    --red: #ff6b6b;
-    --red-dim: rgba(255, 107, 107, 0.12);
-    font-family:
-      "Inter",
-      -apple-system,
-      BlinkMacSystemFont,
-      "Segoe UI",
-      sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.55;
-    -webkit-font-smoothing: antialiased;
-  }
-  .gf-wrap * {
-    box-sizing: border-box;
-  }
-  .gf-container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 0 24px;
-  }
+<!doctype html>
+<html lang="en">
 
-  .gf-topbar {
-    background: var(--accent-dim);
-    border-bottom: 1px solid var(--border);
-    text-align: center;
-    padding: 10px 16px;
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--accent);
-  }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OPD Growth &amp; Recurring Revenue Framework — 7Unit
+  </title>
+  <style>
+    .gf-wrap {
+      --bg: #050a1c;
+      --bg-panel: #0b1330;
+      --bg-panel-2: #101a3d;
+      --border: rgba(255, 255, 255, 0.08);
+      --text: #f4f6fb;
+      --text-dim: #a8b0c8;
+      --accent: #25d366;
+      --accent-dim: rgba(37, 211, 102, 0.14);
+      --red: #ff6b6b;
+      --red-dim: rgba(255, 107, 107, 0.12);
+      font-family:
+        "Inter",
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
 
-  .gf-nav {
-    position: sticky;
-    top: 0;
-    z-index: 50;
-    background: rgba(5, 10, 28, 0.9);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border);
-  }
-  .gf-nav-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 14px 24px;
-    max-width: 900px;
-    margin: 0 auto;
-  }
-  .gf-logo {
-    font-weight: 800;
-    font-size: 17px;
-    letter-spacing: -0.01em;
-    color: var(--text);
-    text-decoration: none;
-  }
-  .gf-logo span {
-    color: var(--accent);
-  }
-  .gf-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    background: var(--accent);
-    color: #04220f;
-    font-weight: 700;
-    font-size: 14px;
-    padding: 11px 20px;
-    border-radius: 10px;
-    text-decoration: none;
-    border: none;
-    cursor: pointer;
-    transition:
-      transform 0.15s ease,
-      box-shadow 0.15s ease;
-    white-space: nowrap;
-  }
-  .gf-btn:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.25);
-  }
-  .gf-btn-lg {
-    padding: 16px 28px;
-    font-size: 15.5px;
-    border-radius: 12px;
-  }
-  .gf-btn-block {
-    width: 100%;
-    text-align: center;
-  }
+    .gf-wrap * {
+      box-sizing: border-box;
+    }
 
-  .gf-hero {
-    padding: 56px 0 40px;
-    text-align: center;
-  }
-  .gf-eyebrow {
-    display: inline-block;
-    font-size: 12.5px;
-    font-weight: 600;
-    color: var(--accent);
-    background: var(--accent-dim);
-    padding: 7px 14px;
-    border-radius: 999px;
-    margin-bottom: 22px;
-  }
-  .gf-framework-tag {
-    font-size: 12px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--text-dim);
-    margin-bottom: 14px;
-    font-weight: 600;
-  }
-  .gf-h1 {
-    font-size: 38px;
-    line-height: 1.15;
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    margin: 0 0 20px;
-    max-width: 720px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .gf-h1 .accent {
-    color: var(--accent);
-  }
-  .gf-result-line {
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--accent);
-    margin-bottom: 22px;
-  }
-  .gf-sub {
-    font-size: 16.5px;
-    color: var(--text-dim);
-    max-width: 620px;
-    margin: 0 auto 30px;
-  }
-  .gf-meta {
-    font-size: 13px;
-    color: var(--text-dim);
-    margin-top: 16px;
-  }
+    .gf-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
 
-  .gf-section {
-    padding: 56px 0;
-    border-top: 1px solid var(--border);
-  }
-  .gf-kicker {
-    font-size: 12.5px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--accent);
-    margin-bottom: 10px;
-    text-align: center;
-  }
-  .gf-h2 {
-    font-size: 27px;
-    font-weight: 800;
-    letter-spacing: -0.01em;
-    margin: 0 0 16px;
-    text-align: center;
-    max-width: 680px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .gf-lede {
-    font-size: 15.5px;
-    color: var(--text-dim);
-    max-width: 560px;
-    margin: 0 auto 36px;
-    text-align: center;
-  }
+    .gf-topbar {
+      background: var(--accent-dim);
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+      padding: 10px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+    }
 
-  .gf-reframe p {
-    font-size: 16px;
-    color: var(--text-dim);
-    margin: 0 0 16px;
-  }
-  .gf-reframe strong {
-    color: var(--text);
-  }
-  .gf-reframe .callout {
-    background: var(--bg-panel);
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--accent);
-    border-radius: 12px;
-    padding: 20px 22px;
-    font-size: 16px;
-    color: var(--text);
-    margin: 24px 0;
-  }
+    .gf-nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(5, 10, 28, 0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
 
-  .gf-pain-grid {
-    display: grid;
-    gap: 14px;
-  }
-  .gf-pain-card {
-    display: flex;
-    gap: 14px;
-    background: var(--bg-panel);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 20px;
-  }
-  .gf-pain-dot {
-    flex-shrink: 0;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: var(--red);
-    margin-top: 6px;
-  }
-  .gf-pain-card h3 {
-    font-size: 15.5px;
-    font-weight: 700;
-    margin: 0 0 6px;
-  }
-  .gf-pain-card p {
-    font-size: 14px;
-    color: var(--text-dim);
-    margin: 0;
-  }
+    .gf-nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0px 24px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
 
-  .gf-pillars {
-    display: grid;
-    gap: 18px;
-  }
-  .gf-pillar {
-    display: flex;
-    gap: 16px;
-    background: var(--bg-panel);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 24px;
-  }
-  .gf-pillar-check {
-    flex-shrink: 0;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background: var(--accent-dim);
-    color: var(--accent);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 800;
-  }
-  .gf-pillar h3 {
-    font-size: 16px;
-    font-weight: 700;
-    margin: 0 0 6px;
-  }
-  .gf-pillar p {
-    font-size: 14.5px;
-    color: var(--text-dim);
-    margin: 0;
-  }
+    @media (max-width: 640px) {
+      .gf-nav-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 5px 24px;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+    }
 
-  .gf-concept-box {
-    text-align: center;
-    background: linear-gradient(135deg, var(--bg-panel), var(--bg-panel-2));
-    border: 1px solid var(--border);
-    border-radius: 18px;
-    padding: 32px 24px;
-    margin-top: 30px;
-  }
-  .gf-concept-box .label {
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--text-dim);
-    margin-bottom: 8px;
-  }
-  .gf-concept-box .name {
-    font-size: 22px;
-    font-weight: 800;
-    color: var(--accent);
-    margin-bottom: 10px;
-  }
-  .gf-concept-box p {
-    font-size: 14.5px;
-    color: var(--text-dim);
-    margin: 0;
-    max-width: 500px;
-    margin: 0 auto;
-  }
+    .gf-logo {
+      font-weight: 800;
+      font-size: 17px;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      text-decoration: none;
+      margin: 0;
+    }
 
-  .gf-context-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-  }
-  @media (max-width: 700px) {
+    .gf-logo span {
+      color: var(--accent);
+    }
+
+    .gf-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--accent);
+      color: #04220f;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 11px 20px;
+      border-radius: 10px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .gf-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.25);
+    }
+
+    .gf-btn-lg {
+      padding: 16px 28px;
+      font-size: 15.5px;
+      border-radius: 12px;
+    }
+
+    .gf-btn-block {
+      width: 100%;
+      text-align: center;
+    }
+
+    .gf-hero {
+      padding: 16px 0 40px;
+      text-align: center;
+    }
+
+    .gf-eyebrow {
+      display: inline-block;
+      font-size: clamp(11px, 2.8vw, 12.5px);
+      font-weight: 600;
+      color: var(--accent);
+      background: var(--accent-dim);
+      padding: 7px 14px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+    }
+
+    .gf-framework-tag {
+      font-size: clamp(10.5px, 2.6vw, 12px);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 0px;
+      font-weight: 600;
+    }
+
+    .gf-framework-tag-sub {
+      font-size: clamp(8px, 2.6vw, 10.5px);
+      margin-top: 0px;
+      margin-bottom: 14px;
+    }
+
+    .gf-h1 {
+      font-size: clamp(24px, 6vw, 38px);
+      line-height: 1.18;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin: 0 auto 20px;
+      max-width: 720px;
+      width: 100%;
+    }
+
+    .gf-h1 .accent {
+      color: var(--accent);
+    }
+
+    .gf-h1 .red {
+      color: var(--red);
+    }
+
+    .gf-result-line {
+      font-size: clamp(16px, 4.5vw, 20px);
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 22px;
+    }
+
+    .gf-sub {
+      font-size: clamp(14px, 3.6vw, 16.5px);
+      color: var(--text-dim);
+      max-width: 620px;
+      margin: 0 auto 30px;
+    }
+
+    .gf-meta {
+      font-size: clamp(11.5px, 3vw, 13px);
+      color: var(--text-dim);
+      margin-top: 16px;
+    }
+
+    /* Heading covers ~50% of the viewport on large screens, widening as the
+      screen narrows so it never wraps awkwardly on phones */
+    @media (min-width: 1100px) {
+      .gf-h1 {
+        max-width: 100%;
+      }
+    }
+
+    @media (min-width: 900px) and (max-width: 1099px) {
+      .gf-h1 {
+        max-width: 100%;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .gf-h1 {
+        max-width: 100%;
+        line-height: 1.22;
+      }
+
+      .gf-hero {
+        padding: 10px 0 28px;
+      }
+    }
+
+    .gf-section {
+      padding: 56px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .gf-kicker {
+      font-size: 12.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .gf-h2 {
+      font-size: clamp(22px, 4.5vw, 27px);
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      margin: 0 0 16px;
+      text-align: center;
+      max-width: 680px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .gf-lede {
+      font-size: 15.5px;
+      color: var(--text-dim);
+      max-width: 560px;
+      margin: 0 auto 36px;
+      text-align: center;
+    }
+
+    .gf-reframe p {
+      font-size: 16px;
+      color: var(--text-dim);
+      margin: 0 0 16px;
+    }
+
+    .gf-reframe strong {
+      color: var(--text);
+    }
+
+    .gf-reframe .callout {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 12px;
+      padding: 20px 22px;
+      font-size: 16px;
+      color: var(--text);
+      margin: 24px 0;
+    }
+
+    .gf-pain-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .gf-pain-card {
+      display: flex;
+      gap: 14px;
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+    }
+
+    .gf-pain-dot {
+      flex-shrink: 0;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--red);
+      margin-top: 6px;
+    }
+
+    .gf-pain-card h3 {
+      font-size: 15.5px;
+      font-weight: 700;
+      margin: 0 0 6px;
+    }
+
+    .gf-pain-card p {
+      font-size: 14px;
+      color: var(--text-dim);
+      margin: 0;
+    }
+
+    .gf-pillars {
+      display: grid;
+      gap: 18px;
+    }
+
+    .gf-pillar {
+      display: flex;
+      gap: 16px;
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+    }
+
+    .gf-pillar-check {
+      flex-shrink: 0;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--accent-dim);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+    }
+
+    .gf-pillar h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin: 0 0 6px;
+    }
+
+    .gf-pillar p {
+      font-size: 14.5px;
+      color: var(--text-dim);
+      margin: 0;
+    }
+
+    .gf-concept-box {
+      text-align: center;
+      background: linear-gradient(135deg, var(--bg-panel), var(--bg-panel-2));
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 32px 24px;
+      margin-top: 30px;
+    }
+
+    .gf-concept-box .label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-dim);
+      margin-bottom: 8px;
+    }
+
+    .gf-concept-box .name {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .gf-concept-box p {
+      font-size: 14.5px;
+      color: var(--text-dim);
+      margin: 0;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
     .gf-context-grid {
-      grid-template-columns: 1fr;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
     }
-  }
-  .gf-context-card {
-    background: var(--bg-panel);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 20px;
-  }
-  .gf-context-card .stat {
-    font-size: 20px;
-    font-weight: 800;
-    color: var(--accent);
-    margin-bottom: 6px;
-  }
-  .gf-context-card .desc {
-    font-size: 12.5px;
-    color: var(--text-dim);
-    line-height: 1.5;
-  }
-  .gf-context-note {
-    text-align: center;
-    font-size: 12px;
-    color: var(--text-dim);
-    margin-top: 18px;
-    opacity: 0.75;
-  }
 
-  .gf-cohort-box {
-    background: var(--bg-panel);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 28px;
-    text-align: center;
-  }
-  .gf-cohort-box h3 {
-    font-size: 17px;
-    font-weight: 700;
-    margin: 0 0 10px;
-  }
-  .gf-cohort-box p {
-    font-size: 14.5px;
-    color: var(--text-dim);
-    margin: 0 0 18px;
-    max-width: 520px;
-    margin-left: auto;
-    margin-right: auto;
-  }
+    @media (max-width: 700px) {
+      .gf-context-grid {
+        grid-template-columns: 1fr;
+      }
+    }
 
-  .gf-fit-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-  }
-  @media (max-width: 700px) {
+    .gf-context-card {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+    }
+
+    .gf-context-card .stat {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+
+    .gf-context-card .desc {
+      font-size: 12.5px;
+      color: var(--text-dim);
+      line-height: 1.5;
+    }
+
+    .gf-context-note {
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-dim);
+      margin-top: 18px;
+      opacity: 0.75;
+    }
+
+    .gf-cohort-box {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      text-align: center;
+    }
+
+    .gf-cohort-box h3 {
+      font-size: 17px;
+      font-weight: 700;
+      margin: 0 0 10px;
+    }
+
+    .gf-cohort-box p {
+      font-size: 14.5px;
+      color: var(--text-dim);
+      margin: 0 0 18px;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
     .gf-fit-grid {
-      grid-template-columns: 1fr;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
     }
-  }
-  .gf-fit-card {
-    border-radius: 16px;
-    padding: 24px;
-    border: 1px solid var(--border);
-  }
-  .gf-fit-yes {
-    background: var(--accent-dim);
-    border-color: rgba(37, 211, 102, 0.3);
-  }
-  .gf-fit-no {
-    background: var(--red-dim);
-    border-color: rgba(255, 107, 107, 0.25);
-  }
-  .gf-fit-card h3 {
-    font-size: 15px;
-    font-weight: 700;
-    margin: 0 0 14px;
-  }
-  .gf-fit-card ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    display: grid;
-    gap: 10px;
-  }
-  .gf-fit-card li {
-    font-size: 13.5px;
-    color: var(--text-dim);
-    padding-left: 20px;
-    position: relative;
-  }
-  .gf-fit-yes li::before {
-    content: "✓";
-    position: absolute;
-    left: 0;
-    color: var(--accent);
-    font-weight: 700;
-  }
-  .gf-fit-no li::before {
-    content: "✕";
-    position: absolute;
-    left: 0;
-    color: var(--red);
-    font-weight: 700;
-  }
 
-  .gf-steps {
-    display: grid;
-    gap: 0;
-  }
-  .gf-step {
-    display: grid;
-    grid-template-columns: 90px 1fr;
-    gap: 18px;
-    padding: 20px 0;
-    border-top: 1px solid var(--border);
-  }
-  .gf-step:first-child {
-    border-top: none;
-  }
-  .gf-step .time {
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--accent);
-  }
-  .gf-step h3 {
-    font-size: 15.5px;
-    font-weight: 700;
-    margin: 0 0 6px;
-  }
-  .gf-step p {
-    font-size: 13.5px;
-    color: var(--text-dim);
-    margin: 0;
-  }
+    @media (max-width: 700px) {
+      .gf-fit-grid {
+        grid-template-columns: 1fr;
+      }
+    }
 
-  .gf-takeaways {
-    display: grid;
-    gap: 14px;
-  }
-  .gf-takeaway {
-    display: flex;
-    gap: 14px;
-    align-items: flex-start;
-  }
-  .gf-takeaway-icon {
-    font-size: 20px;
-    flex-shrink: 0;
-  }
-  .gf-takeaway h4 {
-    font-size: 14.5px;
-    font-weight: 700;
-    margin: 0 0 4px;
-  }
-  .gf-takeaway p {
-    font-size: 13.5px;
-    color: var(--text-dim);
-    margin: 0;
-  }
+    .gf-fit-card {
+      border-radius: 16px;
+      padding: 24px;
+      border: 1px solid var(--border);
+    }
 
-  .gf-about-box {
-    background: var(--bg-panel);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 28px;
-  }
-  .gf-about-box p {
-    font-size: 14.5px;
-    color: var(--text-dim);
-    margin: 0 0 14px;
-  }
-  .gf-about-box p:last-child {
-    margin-bottom: 0;
-  }
-  .gf-about-facts {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 18px;
-  }
-  .gf-fact-tag {
-    background: var(--bg-panel-2);
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    padding: 7px 14px;
-    font-size: 12.5px;
-    color: var(--text-dim);
-  }
+    .gf-fit-yes {
+      background: var(--accent-dim);
+      border-color: rgba(37, 211, 102, 0.3);
+    }
 
-  .gf-risk-box {
-    text-align: center;
-    background: var(--accent-dim);
-    border: 1px solid rgba(37, 211, 102, 0.3);
-    border-radius: 18px;
-    padding: 32px 24px;
-  }
-  .gf-risk-box .icon {
-    font-size: 28px;
-    margin-bottom: 12px;
-  }
-  .gf-risk-box h3 {
-    font-size: 18px;
-    font-weight: 800;
-    margin: 0 0 10px;
-  }
-  .gf-risk-box p {
-    font-size: 14px;
-    color: var(--text-dim);
-    margin: 0 auto 6px;
-    max-width: 480px;
-  }
+    .gf-fit-no {
+      background: var(--red-dim);
+      border-color: rgba(255, 107, 107, 0.25);
+    }
 
-  .gf-faq-item {
-    border-top: 1px solid var(--border);
-  }
-  .gf-faq-item:last-child {
-    border-bottom: 1px solid var(--border);
-  }
-  .gf-faq-q {
-    width: 100%;
-    text-align: left;
-    background: none;
-    border: none;
-    color: var(--text);
-    font-size: 15px;
-    font-weight: 600;
-    padding: 18px 0;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 16px;
-  }
-  .gf-faq-q .plus {
-    color: var(--accent);
-    font-size: 20px;
-    font-weight: 400;
-    transition: transform 0.2s ease;
-  }
-  .gf-faq-item.open .plus {
-    transform: rotate(45deg);
-  }
-  .gf-faq-a {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.25s ease;
-  }
-  .gf-faq-a p {
-    font-size: 13.5px;
-    color: var(--text-dim);
-    margin: 0 0 18px;
-  }
+    .gf-fit-card h3 {
+      font-size: 15px;
+      font-weight: 700;
+      margin: 0 0 14px;
+    }
 
-  .gf-closer {
-    text-align: center;
-    padding: 60px 0;
-  }
-  .gf-closer h2 {
-    font-size: 27px;
-    font-weight: 800;
-    margin: 0 0 14px;
-    max-width: 620px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .gf-closer p {
-    color: var(--text-dim);
-    max-width: 480px;
-    margin: 0 auto 26px;
-    font-size: 14.5px;
-  }
-  .gf-closer-tags {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 16px;
-    margin-top: 22px;
-  }
-  .gf-closer-tags span {
-    font-size: 12px;
-    color: var(--text-dim);
-  }
+    .gf-fit-card ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
 
-  .gf-footer {
-    border-top: 1px solid var(--border);
-    padding: 32px 0 24px;
-  }
-  .gf-footer-legal {
-    font-size: 11.5px;
-    color: rgba(168, 176, 200, 0.55);
-    line-height: 1.7;
-    text-align: center;
-  }
-  .gf-footer-legal a {
-    color: rgba(168, 176, 200, 0.75);
-  }
+    .gf-fit-card li {
+      font-size: 13.5px;
+      color: var(--text-dim);
+      padding-left: 20px;
+      position: relative;
+    }
 
-  .gf-sticky-cta {
-    position: sticky;
-    bottom: 0;
-    z-index: 40;
-    background: rgba(5, 10, 28, 0.95);
-    backdrop-filter: blur(10px);
-    border-top: 1px solid var(--border);
-    padding: 12px 16px;
-    text-align: center;
-    display: none;
-  }
-  @media (max-width: 700px) {
+    .gf-fit-yes li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .gf-fit-no li::before {
+      content: "✕";
+      position: absolute;
+      left: 0;
+      color: var(--red);
+      font-weight: 700;
+    }
+
+    .gf-steps {
+      display: grid;
+      gap: 0;
+    }
+
+    .gf-step {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 18px;
+      padding: 20px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .gf-step:first-child {
+      border-top: none;
+    }
+
+    .gf-step .time {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .gf-step h3 {
+      font-size: 15.5px;
+      font-weight: 700;
+      margin: 0 0 6px;
+    }
+
+    .gf-step p {
+      font-size: 13.5px;
+      color: var(--text-dim);
+      margin: 0;
+    }
+
+    .gf-takeaways {
+      display: grid;
+      gap: 14px;
+    }
+
+    .gf-takeaway {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .gf-takeaway-icon {
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .gf-takeaway h4 {
+      font-size: 14.5px;
+      font-weight: 700;
+      margin: 0 0 4px;
+    }
+
+    .gf-takeaway p {
+      font-size: 13.5px;
+      color: var(--text-dim);
+      margin: 0;
+    }
+
+    .gf-about-box {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+    }
+
+    .gf-about-box p {
+      font-size: 14.5px;
+      color: var(--text-dim);
+      margin: 0 0 14px;
+    }
+
+    .gf-about-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    .gf-about-facts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .gf-fact-tag {
+      background: var(--bg-panel-2);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 7px 14px;
+      font-size: 12.5px;
+      color: var(--text-dim);
+    }
+
+    .gf-risk-box {
+      text-align: center;
+      background: var(--accent-dim);
+      border: 1px solid rgba(37, 211, 102, 0.3);
+      border-radius: 18px;
+      padding: 32px 24px;
+    }
+
+    .gf-risk-box .icon {
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+
+    .gf-risk-box h3 {
+      font-size: clamp(16px, 3.5vw, 18px);
+      font-weight: 800;
+      margin: 0 0 10px;
+    }
+
+    .gf-risk-box p {
+      font-size: 14px;
+      color: var(--text-dim);
+      margin: 0 auto 6px;
+      max-width: 480px;
+    }
+
+    .gf-faq-item {
+      border-top: 1px solid var(--border);
+    }
+
+    .gf-faq-item:last-child {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .gf-faq-q {
+      width: 100%;
+      text-align: left;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 15px;
+      font-weight: 600;
+      padding: 18px 0;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .gf-faq-q .plus {
+      color: var(--accent);
+      font-size: 20px;
+      font-weight: 400;
+      transition: transform 0.2s ease;
+    }
+
+    .gf-faq-item.open .plus {
+      transform: rotate(45deg);
+    }
+
+    .gf-faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.25s ease;
+    }
+
+    .gf-faq-a p {
+      font-size: 13.5px;
+      color: var(--text-dim);
+      margin: 0 0 18px;
+    }
+
+    .gf-closer {
+      text-align: center;
+      padding: 60px 0;
+    }
+
+    .gf-closer h2 {
+      font-size: clamp(22px, 4.5vw, 27px);
+      font-weight: 800;
+      margin: 0 0 14px;
+      max-width: 620px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .gf-closer p {
+      color: var(--text-dim);
+      max-width: 480px;
+      margin: 0 auto 26px;
+      font-size: 14.5px;
+    }
+
+    .gf-closer-tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 22px;
+    }
+
+    .gf-closer-tags span {
+      font-size: 12px;
+      color: var(--text-dim);
+    }
+
+    .gf-footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 0 24px;
+    }
+
+    .gf-footer-legal {
+      font-size: 11.5px;
+      color: rgba(168, 176, 200, 0.55);
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    .gf-footer-legal a {
+      color: rgba(168, 176, 200, 0.75);
+    }
+
     .gf-sticky-cta {
-      display: block;
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 999;
+      background: rgba(5, 10, 28, 0.95);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid var(--border);
+      padding: 12px 16px;
+      text-align: center;
+      display: none;
     }
-  }
-</style>
 
-<div class="gf-wrap">
-  <div class="gf-topbar">
-    ⚡ Now accepting a limited number of hospitals & clinics into our founding
-    cohort
-  </div>
+    @media (max-width: 700px) {
+      .show {
+        display: block;
+      }
 
-  <nav class="gf-nav">
-    <div class="gf-nav-inner">
-      <a href="#" class="gf-logo">7Unit<span>Growth</span></a>
-      <a
-        href="#open-popup"
-        data-popup="flexiPoup_V0mQYX"
-        data-ftbuttontype="popup"
-        class="gf-btn"
-        >Book My Growth Call</a
-      >
+      .gf-footer {
+        padding-bottom: 80px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="gf-wrap">
+    <div class="gf-topbar">
+      ⚡ Limited to 5 partners this month, so every clinic gets real attention
     </div>
-  </nav>
-
-  <section class="gf-hero">
-    <div class="gf-container">
-      <span class="gf-eyebrow"
-        >Only for hospital &amp; clinic owners already running OPD</span
-      >
-      <div class="gf-framework-tag">
-        The OPD Growth &amp; Recurring Revenue Framework™ — by 7Unit
+    <nav class="gf-nav">
+      <div class="gf-nav-inner">
+        <p class="gf-logo">
+          <span>7Unit</span>™
+        </p>
+        <a href="#open-popup" data-popup="flexiPoup_V0mQYX" data-ftbuttontype="popup" class="gf-btn">Book My Strategy
+          Call</a>
       </div>
-      <h1 class="gf-h1">
-        We help hospitals &amp; clinics get
-        <span class="accent">more OPD patients</span>,
-        <span class="accent">more returning patients</span>, and
-        <span class="accent">more revenue</span> — without you managing another
-        tool.
-      </h1>
-      <p class="gf-sub">
-        Not a software pitch. Not a course. A working partnership — we run the
-        patient acquisition, you focus on the patients in front of you.
-      </p>
-      <a
-        href="#open-popup"
-        data-popup="flexiPoup_V0mQYX"
-        data-ftbuttontype="popup"
-        class="gf-btn gf-btn-lg"
-      >
-        Book My Free Growth Call →
-      </a>
-      <p class="gf-meta">
-        20 minutes · we map your current OPD numbers live · zero pitch deck
-      </p>
-    </div>
-  </section>
-
-  <section class="gf-section">
-    <div class="gf-container gf-reframe">
-      <div class="gf-kicker">Let's be honest for a second</div>
-      <h2 class="gf-h2">
-        You're not short on patients in your city. You're short on a system that
-        brings them to you.
-      </h2>
-      <p>Think about your last three months.</p>
-      <p>
-        New patients still come in — but mostly the ones who already know your
-        name. The ones who never heard of you found someone else on an app, or
-        never heard of you at all.
-      </p>
-      <p>
-        The ones who <strong>did</strong> come in for that first consult — some
-        of them never came back for the follow-up. Nobody chased them. Nobody
-        had the time.
-      </p>
-      <div class="callout">
-        <strong>Here's what nobody tells hospital owners at your stage:</strong>
-        the clinics pulling ahead in your city aren't necessarily doing better
-        medicine. They're running a system that brings patients in — and brings
-        them back — without depending on any one person remembering to do it.
+    </nav>
+    <section class="gf-hero">
+      <div class="gf-container">
+        <span class="gf-eyebrow">Only for hospital &amp; clinic owners already running OPD</span>
+        <div class="gf-framework-tag">
+          The OPD Growth &amp; Recurring Revenue Framework — by 7Unit
+        </div>
+        <p class="gf-framework-tag-sub">
+          | More OPD Patients. More Returning Patients. More Revenue |
+        </p>
+        <h1 class="gf-h1">
+          Watch us bring
+          <span class="accent">90-100 real OPDs</span>— not
+          leads or time-wasters—and
+          <span class="accent">recurring revenue predictably</span> in
+          <span class="accent">45–90 days</span>, on autopilot.
+          <span class="red">
+            Or you don't pay.</span>
+        </h1>
+        <p class="gf-sub">
+          Get serious enquiries. Stop referral dependency. Stop getting
+          ghosted. Focus more on patients. No more burnout.
+        </p>
+        <a href="#open-popup" data-popup="flexiPoup_V0mQYX" data-ftbuttontype="popup" class="gf-btn gf-btn-lg">
+          Book My Free Strategy Call →
+        </a>
+        <p class="gf-meta">
+          45-60 minutes · tailored to your clinic · zero pitch deck
+        </p>
       </div>
-      <p>
-        That system exists. On a free call, we'll map exactly what it looks like
-        for your OPD.
-      </p>
-    </div>
-  </section>
-
-  <section class="gf-section">
-    <div class="gf-container">
-      <div class="gf-kicker">Does any of this sound familiar?</div>
-      <h2 class="gf-h2">
-        If even two of these hit home, this call was built for you.
-      </h2>
-      <div class="gf-pain-grid">
-        <div class="gf-pain-card">
-          <span class="gf-pain-dot"></span>
-          <div>
-            <h3>You're the one carrying the front desk in your head</h3>
-            <p>
-              If your best coordinator took a week off, would enquiries and
-              follow-ups still get handled — or would it all quietly fall on
-              you?
-            </p>
-          </div>
+    </section>
+    <section class="gf-section">
+      <div class="gf-container gf-reframe">
+        <div class="gf-kicker">Let's be honest for a second
         </div>
-        <div class="gf-pain-card">
-          <span class="gf-pain-dot"></span>
-          <div>
-            <h3>You don't actually know your real numbers</h3>
-            <p>
-              How many enquiries turned into bookings last month? How many
-              follow-ups were missed? Most owners can't answer this — not
-              because they don't care, nobody's tracking it.
-            </p>
-          </div>
+        <h2 class="gf-h2">
+          You're not short on patients in your city. You're short on a system
+          that brings them to you.
+        </h2>
+        <p>Think about your last three months.
+        </p>
+        <p>
+          New patients still come in — but mostly the ones who already know
+          your name. The ones who never heard of you found someone else on an
+          app, or never heard of you at all.
+        </p>
+        <p>
+          The ones who
+          <strong>did</strong> come in for that first consult — some of them
+          never came back for the follow-up. Nobody chased them. Nobody had
+          the time.
+        </p>
+        <div class="callout">
+          <strong>Here's what nobody tells hospital owners at your stage:</strong>
+          the clinics pulling ahead in your city aren't necessarily doing
+          better medicine. They're running a system that brings patients in —
+          and brings them back — without depending on any one person
+          remembering to do it.
         </div>
-        <div class="gf-pain-card">
-          <span class="gf-pain-dot"></span>
-          <div>
-            <h3>Your OPD growth has flattened</h3>
-            <p>
-              You're working just as hard as you were a year ago. The patient
-              count isn't moving the way it should be. You know there's a better
-              way — you just haven't built it yet.
-            </p>
-          </div>
+        <p>
+          That system exists. On a free call, we'll map exactly what it looks
+          like for your OPD.
+        </p>
+      </div>
+    </section>
+    <section class="gf-section">
+      <div class="gf-container">
+        <div class="gf-kicker">Does any of this sound familiar?
         </div>
-        <div class="gf-pain-card">
-          <span class="gf-pain-dot"></span>
-          <div>
-            <h3>You've tried things — and been burned</h3>
-            <p>
-              A marketplace app that listed you next to competitors. An HMS
-              rollout that took forever. You're done with promises. You want to
-              see it work before you commit to anything.
-            </p>
+        <h2 class="gf-h2">
+          If even two of these hit home, this call was built for you.
+        </h2>
+        <div class="gf-pain-grid">
+          <div class="gf-pain-card">
+            <span class="gf-pain-dot"></span>
+            <div>
+              <h3>You're the one carrying the front desk in your head
+              </h3>
+              <p>
+                If your best coordinator took a week off, would enquiries and
+                follow-ups still get handled — or would it all quietly fall on
+                you?
+              </p>
+            </div>
+          </div>
+          <div class="gf-pain-card">
+            <span class="gf-pain-dot"></span>
+            <div>
+              <h3>You don't actually know your real numbers
+              </h3>
+              <p>
+                How many enquiries turned into bookings last month? How many
+                follow-ups were missed? Most owners can't answer this — not
+                because they don't care, nobody's tracking it.
+              </p>
+            </div>
+          </div>
+          <div class="gf-pain-card">
+            <span class="gf-pain-dot"></span>
+            <div>
+              <h3>Your OPD growth has flattened
+              </h3>
+              <p>
+                You're working just as hard as you were a year ago. The
+                patient count isn't moving the way it should be. You know
+                there's a better way — you just haven't built it yet.
+              </p>
+            </div>
+          </div>
+          <div class="gf-pain-card">
+            <span class="gf-pain-dot"></span>
+            <div>
+              <h3>You've tried things — and been burned
+              </h3>
+              <p>
+                A marketplace app that listed you next to competitors. An HMS
+                rollout that took forever. You're done with promises. You want
+                to see it work before you commit to anything.
+              </p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <section class="gf-section">
-    <div class="gf-container">
-      <div class="gf-kicker">
-        What separates growing OPDs from stagnant ones
-      </div>
-      <h2 class="gf-h2">
-        It's never one big fix. It's three specific things working together.
-      </h2>
-      <div class="gf-pillars">
-        <div class="gf-pillar">
-          <span class="gf-pillar-check">1</span>
-          <div>
-            <h3>A patient acquisition channel that actually fills your OPD</h3>
-            <p>
-              Not another listing app that puts you next to competitors — a
-              channel that brings patients directly to your own number, under
-              your own brand, without a per-lead fee eating into every booking.
-            </p>
+    </section>
+    <section class="gf-section">
+      <div class="gf-container">
+        <div class="gf-kicker">
+          What separates growing OPDs from stagnant ones
+        </div>
+        <h2 class="gf-h2">
+          It's never one big fix. It's three specific things working together.
+        </h2>
+        <div class="gf-pillars">
+          <div class="gf-pillar">
+            <span class="gf-pillar-check">1</span>
+            <div>
+              <h3>
+                A patient acquisition channel that actually fills your OPD
+              </h3>
+              <p>
+                Not another listing app that puts you next to competitors — a
+                channel that brings patients directly to your own number,
+                under your own brand, without a per-lead fee eating into every
+                booking.
+              </p>
+            </div>
+          </div>
+          <div class="gf-pillar">
+            <span class="gf-pillar-check">2</span>
+            <div>
+              <h3>
+                A follow-up system that brings patients back — automatically
+              </h3>
+              <p>
+                The patient who's supposed to come back in two weeks, comes
+                back. Not because someone remembered — because the system
+                doesn't forget. This alone is usually where the biggest hidden
+                revenue is sitting.
+              </p>
+            </div>
+          </div>
+          <div class="gf-pillar">
+            <span class="gf-pillar-check">3</span>
+            <div>
+              <h3>Real visibility into what's actually happening
+              </h3>
+              <p>
+                You'll know your enquiry-to-booking rate, your no-show rate,
+                your follow-up recovery rate — every month, without asking
+                five different people for five different answers.
+              </p>
+            </div>
           </div>
         </div>
-        <div class="gf-pillar">
-          <span class="gf-pillar-check">2</span>
-          <div>
-            <h3>
-              A follow-up system that brings patients back — automatically
+        <div class="gf-concept-box">
+          <div class="label">Together, this is what we call
+          </div>
+          <div class="name">A Self-Filling OPD
+          </div>
+          <p>
+            A hospital or clinic that grows its patient volume and its
+            returning-patient revenue whether you're personally chasing it
+            that week or not.
+          </p>
+        </div>
+      </div>
+    </section>
+    <section class="gf-section">
+      <div class="gf-container">
+        <div class="gf-kicker">
+          Why this problem is bigger than most owners realise
+        </div>
+        <h2 class="gf-h2">
+          A quick look at what's happening across Indian OPDs right now
+        </h2>
+        <div class="gf-context-grid">
+          <div class="gf-context-card">
+            <div class="stat">19–20%
+            </div>
+            <div class="desc">
+              Average no-show rate at Indian OPD clinics — most don't measure
+              it at all.
+            </div>
+          </div>
+          <div class="gf-context-card">
+            <div class="stat">67%
+            </div>
+            <div class="desc">
+              Of Indian healthcare enquiries now arrive on WhatsApp — not
+              calls, not walk-ins.
+            </div>
+          </div>
+          <div class="gf-context-card">
+            <div class="stat">₹50K–₹5L
+            </div>
+            <div class="desc">
+              Typical value of a single lost follow-up or procedure at a
+              private Indian hospital.
+            </div>
+          </div>
+        </div>
+        <p class="gf-context-note">
+          Industry research, not our own client results — we'll show you where
+          your specific clinic likely stands on your call.
+        </p>
+      </div>
+    </section>
+    <section class="gf-section">
+      <div class="gf-container">
+        <div class="gf-kicker">Where we are right now
+        </div>
+        <h2 class="gf-h2">
+          We're building this with a small founding group of hospitals and
+          clinics
+        </h2>
+        <div class="gf-cohort-box">
+          <h3>
+            Honest, upfront: we're early — and that's exactly why this is
+            worth your time
+          </h3>
+          <p>
+            We're not running this at scale yet. We're working closely with a
+            limited group of hospitals and clinics to get this exactly right —
+            which means the owners who join now get direct access to the team
+            building it, not a support ticket queue.
+          </p>
+          <a href="#open-popup" data-popup="flexiPoup_V0mQYX" data-ftbuttontype="popup" class="gf-btn">See if you're a
+            fit →</a>
+        </div>
+      </div>
+    </section>
+    <section class="gf-section">
+      <div class="gf-container">
+        <div class="gf-kicker">Is this call for you?
+        </div>
+        <h2 class="gf-h2">
+          Let's be clear about who this is — and isn't — for.
+        </h2>
+        <div class="gf-fit-grid">
+          <div class="gf-fit-card gf-fit-yes">
+            <h3>✅ This is for you if:
             </h3>
-            <p>
-              The patient who's supposed to come back in two weeks, comes back.
-              Not because someone remembered — because the system doesn't
-              forget. This alone is usually where the biggest hidden revenue is
-              sitting.
-            </p>
+            <ul>
+              <li>
+                You own or run a clinic, specialty practice, or small hospital
+                already seeing OPD patients
+              </li>
+              <li>
+                You're tired of managing enquiries and follow-ups manually or
+                on someone's personal WhatsApp
+              </li>
+              <li>
+                You want more patients and more returning patients — without
+                hiring a bigger front desk
+              </li>
+              <li>
+                You're open to a real system, not another app you have to
+                babysit
+              </li>
+            </ul>
           </div>
-        </div>
-        <div class="gf-pillar">
-          <span class="gf-pillar-check">3</span>
-          <div>
-            <h3>Real visibility into what's actually happening</h3>
-            <p>
-              You'll know your enquiry-to-booking rate, your no-show rate, your
-              follow-up recovery rate — every month, without asking five
-              different people for five different answers.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div class="gf-concept-box">
-        <div class="label">Together, this is what we call</div>
-        <div class="name">A Self-Filling OPD</div>
-        <p>
-          A hospital or clinic that grows its patient volume and its
-          returning-patient revenue whether you're personally chasing it that
-          week or not.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section class="gf-section">
-    <div class="gf-container">
-      <div class="gf-kicker">
-        Why this problem is bigger than most owners realise
-      </div>
-      <h2 class="gf-h2">
-        A quick look at what's happening across Indian OPDs right now
-      </h2>
-      <div class="gf-context-grid">
-        <div class="gf-context-card">
-          <div class="stat">19–20%</div>
-          <div class="desc">
-            Average no-show rate at Indian OPD clinics — most don't measure it
-            at all.
-          </div>
-        </div>
-        <div class="gf-context-card">
-          <div class="stat">67%</div>
-          <div class="desc">
-            Of Indian healthcare enquiries now arrive on WhatsApp — not calls,
-            not walk-ins.
-          </div>
-        </div>
-        <div class="gf-context-card">
-          <div class="stat">₹50K–₹5L</div>
-          <div class="desc">
-            Typical value of a single lost follow-up or procedure at a private
-            Indian hospital.
+          <div class="gf-fit-card gf-fit-no">
+            <h3>❌ This isn't for you if:
+            </h3>
+            <ul>
+              <li>You're not yet running regular OPD consultations
+              </li>
+              <li>
+                You're looking for a one-time marketing trick, not an ongoing
+                system
+              </li>
+              <li>
+                You want guaranteed patient numbers — no one can honestly
+                promise that, and we won't
+              </li>
+              <li>
+                You're not open to changing how enquiries and follow-ups are
+                currently handled
+              </li>
+            </ul>
           </div>
         </div>
       </div>
-      <p class="gf-context-note">
-        Industry research, not our own client results — we'll show you where
-        your specific clinic likely stands on your call.
-      </p>
-    </div>
-  </section>
-
-  <section class="gf-section">
-    <div class="gf-container">
-      <div class="gf-kicker">Where we are right now</div>
-      <h2 class="gf-h2">
-        We're building this with a small founding group of hospitals and clinics
-      </h2>
-      <div class="gf-cohort-box">
-        <h3>
-          Honest, upfront: we're early — and that's exactly why this is worth
-          your time
-        </h3>
-        <p>
-          We're not running this at scale yet. We're working closely with a
-          limited group of hospitals and clinics to get this exactly right —
-          which means the owners who join now get direct access to the team
-          building it, not a support ticket queue.
-        </p>
-        <a
-          href="#open-popup"
-          data-popup="flexiPoup_V0mQYX"
-          data-ftbuttontype="popup"
-          class="gf-btn"
-          >See if you're a fit →</a
-        >
-      </div>
-    </div>
-  </section>
-
-  <section class="gf-section">
-    <div class="gf-container">
-      <div class="gf-kicker">Is this call for you?</div>
-      <h2 class="gf-h2">Let's be clear about who this is — and isn't — for.</h2>
-      <div class="gf-fit-grid">
-        <div class="gf-fit-card gf-fit-yes">
-          <h3>✅ This is for you if:</h3>
-          <ul>
-            <li>
-              You own or run a clinic, specialty practice, or small hospital
-              already seeing OPD patients
-            </li>
-            <li>
-              You're tired of managing enquiries and follow-ups manually or on
-              someone's personal WhatsApp
-            </li>
-            <li>
-              You want more patients and more returning patients — without
-              hiring a bigger front desk
-            </li>
-            <li>
-              You're open to a real system, not another app you have to babysit
-            </li>
-          </ul>
+    </section>
+    <section class="gf-section">
+      <div class="gf-container">
+        <div class="gf-kicker">Your next step
         </div>
-        <div class="gf-fit-card gf-fit-no">
-          <h3>❌ This isn't for you if:</h3>
-          <ul>
-            <li>You're not yet running regular OPD consultations</li>
-            <li>
-              You're looking for a one-time marketing trick, not an ongoing
-              system
-            </li>
-            <li>
-              You want guaranteed patient numbers — no one can honestly promise
-              that, and we won't
-            </li>
-            <li>
-              You're not open to changing how enquiries and follow-ups are
-              currently handled
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="gf-section">
-    <div class="gf-container">
-      <div class="gf-kicker">Your next step</div>
-      <h2 class="gf-h2">Exactly what happens on your free growth call</h2>
-      <div class="gf-steps">
-        <div class="gf-step">
-          <span class="time">0–7 min</span>
-          <div>
-            <h3>Your OPD audit</h3>
-            <p>
-              We'll ask about your current enquiry flow, booking process, and
-              follow-up rate — most owners get clarity here they've never had
-              before.
-            </p>
+        <h2 class="gf-h2">Exactly what happens on your free growth call
+        </h2>
+        <div class="gf-steps">
+          <div class="gf-step">
+            <span class="time">0–30 min</span>
+            <div>
+              <h3>Your OPD audit
+              </h3>
+              <p>
+                We'll ask about your current enquiry flow, booking process,
+                and follow-up rate — most owners get clarity here they've
+                never had before.
+              </p>
+            </div>
           </div>
-        </div>
-        <div class="gf-step">
-          <span class="time">7–15 min</span>
-          <div>
-            <h3>Your growth roadmap</h3>
-            <p>
-              Based on your specific numbers, we'll map where your biggest gap
-              is — new patient acquisition, follow-up loss, or both — and what
-              closing it would actually be worth.
-            </p>
+          <div class="gf-step">
+            <span class="time">30–45 min</span>
+            <div>
+              <h3>Your growth roadmap
+              </h3>
+              <p>
+                Based on your specific numbers, we'll map where your biggest
+                gap is — new patient acquisition, follow-up loss, or both —
+                and what closing it would actually be worth.
+              </p>
+            </div>
           </div>
-        </div>
-        <div class="gf-step">
-          <span class="time">15–18 min</span>
-          <div>
-            <h3>Is this a fit?</h3>
-            <p>
-              If it makes sense to work together, we'll explain exactly how. If
-              not, you still leave with clarity you didn't have before. No
-              pressure either way.
-            </p>
+          <div class="gf-step">
+            <span class="time">45–60 min</span>
+            <div>
+              <h3>Is this a fit?
+              </h3>
+              <p>
+                If it makes sense to work together, we'll explain exactly how.
+                If not, you still leave with clarity you didn't have before.
+                No pressure either way.
+              </p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <section class="gf-section">
-    <div class="gf-container">
-      <div class="gf-kicker">What you'll walk away with</div>
-      <h2 class="gf-h2">By the end of this call, you'll have:</h2>
-      <div class="gf-takeaways">
-        <div class="gf-takeaway">
-          <span class="gf-takeaway-icon">🎯</span>
-          <div>
-            <h4>Clarity on your real numbers</h4>
-            <p>
-              Your current no-show rate, follow-up loss, and where patients are
-              actually slipping through.
-            </p>
+    </section>
+    <section class="gf-section">
+      <div class="gf-container">
+        <div class="gf-kicker">What you'll walk away with
+        </div>
+        <h2 class="gf-h2">By the end of this call, you'll have:
+        </h2>
+        <div class="gf-takeaways">
+          <div class="gf-takeaway">
+            <span class="gf-takeaway-icon">🎯</span>
+            <div>
+              <h4>Clarity on your real numbers
+              </h4>
+              <p>
+                Your current no-show rate, follow-up loss, and where patients
+                are actually slipping through.
+              </p>
+            </div>
           </div>
-        </div>
-        <div class="gf-takeaway">
-          <span class="gf-takeaway-icon">🗺️</span>
-          <div>
-            <h4>A specific growth path</h4>
-            <p>
-              Not generic advice — mapped to your specialty, city, and current
-              patient volume.
-            </p>
+          <div class="gf-takeaway">
+            <span class="gf-takeaway-icon">🗺️</span>
+            <div>
+              <h4>A specific growth path
+              </h4>
+              <p>
+                Not generic advice — mapped to your specialty, city, and
+                current patient volume.
+              </p>
+            </div>
           </div>
-        </div>
-        <div class="gf-takeaway">
-          <span class="gf-takeaway-icon">💡</span>
-          <div>
-            <h4>An honest read on where you stand</h4>
-            <p>
-              Whether the biggest opportunity for you is acquisition, retention,
-              or both — and roughly what it's worth.
-            </p>
+          <div class="gf-takeaway">
+            <span class="gf-takeaway-icon">💡</span>
+            <div>
+              <h4>An honest read on where you stand
+              </h4>
+              <p>
+                Whether the biggest opportunity for you is acquisition,
+                retention, or both — and roughly what it's worth.
+              </p>
+            </div>
           </div>
-        </div>
-        <div class="gf-takeaway">
-          <span class="gf-takeaway-icon">🤝</span>
-          <div>
-            <h4>Zero-pressure next steps</h4>
-            <p>
-              If it's a fit, we'll say so plainly. If it's not, we'll say that
-              too.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="gf-section">
-    <div class="gf-container">
-      <div class="gf-kicker">Who's behind this</div>
-      <h2 class="gf-h2">Built by 7Unit — the team behind Hally</h2>
-      <div class="gf-about-box">
-        <p>
-          We're 7Unit Softwares Pvt Ltd, based in Bangalore. We've spent our
-          time deep in how Indian OPDs actually run day to day — the WhatsApp
-          chaos, the missed follow-ups, the front desk turnover. The OPD Growth
-          &amp; Recurring Revenue Framework is what we've built from that — a
-          direct, hands-on partnership, not a self-serve tool you're left to
-          figure out alone.
-        </p>
-        <p>
-          We're deliberately working with a small group of hospitals and clinics
-          right now, which means founding partners get direct access to our team
-          — not a ticket queue.
-        </p>
-        <div class="gf-about-facts">
-          <span class="gf-fact-tag">7Unit Softwares Pvt Ltd</span>
-          <span class="gf-fact-tag">Bangalore, India</span>
-          <span class="gf-fact-tag">CIN: U62013KA2023PTC175315</span>
-          <span class="gf-fact-tag">Built for Indian OPD workflows</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="gf-section">
-    <div class="gf-container">
-      <div class="gf-risk-box">
-        <div class="icon">🛡️</div>
-        <h3>This call costs you nothing. Literally.</h3>
-        <p>
-          No fee to book. No pitch deck waiting for you. No pressure to decide
-          anything on the call.
-        </p>
-        <p>
-          If it's not a fit, you'll know within the first 10 minutes — and
-          you'll still walk away with clarity on your OPD numbers you didn't
-          have before.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section class="gf-section">
-    <div class="gf-container">
-      <div class="gf-kicker">Before you book</div>
-      <h2 class="gf-h2">Quick answers to what you're probably wondering</h2>
-      <div class="gf-faq">
-        <div class="gf-faq-item">
-          <button class="gf-faq-q">
-            Is this actually free, or will I be sold something?<span
-              class="plus"
-              >+</span
-            >
-          </button>
-          <div class="gf-faq-a">
-            <p>
-              The call itself is genuinely free — no fee, no card required. If
-              we both think there's a real fit to work together, we'll say so
-              plainly at the end. If not, you still leave with a clear read on
-              your OPD numbers.
-            </p>
-          </div>
-        </div>
-        <div class="gf-faq-item">
-          <button class="gf-faq-q">
-            What exactly will you do for us — is this a software or a
-            service?<span class="plus">+</span>
-          </button>
-          <div class="gf-faq-a">
-            <p>
-              It's a partnership, not a self-serve tool. We work directly with
-              you on both sides — bringing patients in, and making sure the ones
-              you already have keep coming back. We'll walk through exactly what
-              that looks like for your specific clinic on the call.
-            </p>
-          </div>
-        </div>
-        <div class="gf-faq-item">
-          <button class="gf-faq-q">
-            Do you guarantee a specific number of patients or revenue?<span
-              class="plus"
-              >+</span
-            >
-          </button>
-          <div class="gf-faq-a">
-            <p>
-              No — and we'd be lying if we told you otherwise. Nobody can
-              honestly guarantee patient numbers. What we can do is show you
-              exactly where your current gaps are, and what closing them has
-              been worth for clinics like yours.
-            </p>
-          </div>
-        </div>
-        <div class="gf-faq-item">
-          <button class="gf-faq-q">
-            We're a small clinic, not a big hospital — is this still for
-            us?<span class="plus">+</span>
-          </button>
-          <div class="gf-faq-a">
-            <p>
-              Yes. This is built around clinics and small hospitals just as much
-              as larger ones — the follow-up and acquisition problems look
-              nearly identical at every size, just at different scale.
-            </p>
-          </div>
-        </div>
-        <div class="gf-faq-item">
-          <button class="gf-faq-q">
-            What should we prepare before the call?<span class="plus">+</span>
-          </button>
-          <div class="gf-faq-a">
-            <p>
-              Nothing complicated — just a rough sense of your monthly OPD
-              volume and how enquiries are handled today. The more honest you
-              are about what's not working, the more useful the call will be.
-            </p>
-          </div>
-        </div>
-        <div class="gf-faq-item">
-          <button class="gf-faq-q">
-            Why are you only taking a limited number of clinics right now?<span
-              class="plus"
-              >+</span
-            >
-          </button>
-          <div class="gf-faq-a">
-            <p>
-              Because we're working hands-on with each founding partner to get
-              this right, not running it as a mass rollout yet. That means real
-              attention on your specific clinic — not a generic playbook.
-            </p>
+          <div class="gf-takeaway">
+            <span class="gf-takeaway-icon">🤝</span>
+            <div>
+              <h4>Zero-pressure next steps
+              </h4>
+              <p>
+                If it's a fit, we'll say so plainly. If it's not, we'll say
+                that too.
+              </p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <section class="gf-closer">
-    <div class="gf-container">
-      <div class="gf-kicker">Ready when you are</div>
-      <h2>
-        Your OPD isn't short on patients. It's short on a system that brings
-        them to you.
-      </h2>
-      <p>
-        One honest 20-minute conversation is enough to know if this is worth
-        pursuing further. No pressure, no pitch deck.
-      </p>
-      <a
-        href="#open-popup"
-        data-popup="flexiPoup_V0mQYX"
-        data-ftbuttontype="popup"
-        class="gf-btn gf-btn-lg"
-        >Book My Free Growth Call →</a
-      >
-      <div class="gf-closer-tags">
-        <span>🔒 Your info stays private</span>
-        <span>📞 20-min personalised call</span>
-        <span>🚫 Zero obligation</span>
-        <span>💯 Zero hard selling</span>
+    </section>
+    <section class="gf-section">
+      <div class="gf-container">
+        <div class="gf-kicker">Who's behind this
+        </div>
+        <h2 class="gf-h2">Built by 7Unit — the team behind Hally
+        </h2>
+        <div class="gf-about-box">
+          <p>
+            We're 7Unit Softwares Pvt Ltd, based in Bangalore. We've spent our
+            time deep in how Indian OPDs actually run day to day — the
+            WhatsApp chaos, the missed follow-ups, the front desk turnover.
+            The OPD Growth &amp; Recurring Revenue Framework is what we've
+            built from that — a direct, hands-on partnership, not a self-serve
+            tool you're left to figure out alone.
+          </p>
+          <p>
+            We're deliberately working with a small group of hospitals and
+            clinics right now, which means founding partners get direct access
+            to our team — not a ticket queue.
+          </p>
+          <div class="gf-about-facts">
+            <span class="gf-fact-tag">7Unit Softwares Pvt Ltd</span>
+            <span class="gf-fact-tag">Bangalore, India</span>
+            <span class="gf-fact-tag">CIN: U62013KA2023PTC175315</span>
+            <span class="gf-fact-tag">Built for Indian OPD workflows</span>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
-
-  <footer class="gf-footer">
-    <div class="gf-container">
-      <div class="gf-footer-legal">
-        The OPD Growth &amp; Recurring Revenue Framework™ is a service of 7Unit
-        Softwares Private Limited.
-        <br />
-        CIN: U62013KA2023PTC175315 · GSTIN: 29AACCZ2228G1Z9 · Bangalore,
-        Karnataka, India
-        <br />
-        Contact: hello@gethally.com ·
-        <a href="https://www.gethally.com/privacy">Privacy Policy</a> ·
-        <a href="https://www.gethally.com/terms">Terms of Use</a>
-        <br />
-        Results referenced on this page are industry research, not guarantees of
-        outcomes for any specific hospital or clinic. Actual results depend on
-        your practice's baseline, market, and execution.
-        <br />
-        © 2026 7Unit Softwares Private Limited
+    </section>
+    <section class="gf-section">
+      <div class="gf-container">
+        <div class="gf-risk-box">
+          <div class="icon">🛡️
+          </div>
+          <h3>This call costs you nothing. Literally.
+          </h3>
+          <p>All of this — in one 60-minute call.
+            </br>
+            Most consultants charge ₹15,000–₹25,000 for this level of clarity.
+          </p>
+          <p>
+            No fee to book. No pitch deck waiting for you. No pressure to
+            decide anything on the call.
+          </p>
+          <p>
+            If it's not a fit, you'll know within the first 30 minutes — and
+            you'll still walk away with clarity on your OPD numbers you didn't
+            have before.
+          </p>
+        </div>
       </div>
-    </div>
-  </footer>
-
-  <div class="gf-sticky-cta">
-    <a
-      href="#open-popup"
-      data-popup="flexiPoup_V0mQYX"
-      data-ftbuttontype="popup"
-      class="gf-btn gf-btn-block"
-      >Book My Free Growth Call →</a
-    >
-  </div>
+    </section>
+    <section class="gf-section">
+      <div class="gf-container">
+        <div class="gf-kicker">Before you book
+        </div>
+        <h2 class="gf-h2">Quick answers to what you're probably wondering
+        </h2>
+        <div class="gf-faq">
+          <div class="gf-faq-item">
+            <button class="gf-faq-q">
+              Is this actually free, or will I be sold something?<span class="plus">+</span>
+            </button>
+            <div class="gf-faq-a">
+              <p>
+                The call itself is genuinely free — no fee, no card required.
+                If we both think there's a real fit to work together, we'll
+                say so plainly at the end. If not, you still leave with a
+                clear read on your OPD numbers.
+              </p>
+            </div>
+          </div>
+          <div class="gf-faq-item">
+            <button class="gf-faq-q">
+              What exactly will you do for us — is this a software or a
+              service?<span class="plus">+</span>
+            </button>
+            <div class="gf-faq-a">
+              <p>
+                It's a partnership, not a self-serve tool. We work directly
+                with you on both sides — bringing patients in, and making sure
+                the ones you already have keep coming back. We'll walk through
+                exactly what that looks like for your specific clinic on the
+                call.
+              </p>
+            </div>
+          </div>
+          <!-- <div class="gf-faq-item">
+<button class="gf-faq-q">
+Do you guarantee a specific number of patients or revenue?<span
+class="plus"
+>+</span
+>
+</button>
+<div class="gf-faq-a">
+<p>
+No — and we'd be lying if we told you otherwise. Nobody can
+honestly guarantee patient numbers. What we can do is show you
+exactly where your current gaps are, and what closing them has
+been worth for clinics like yours.
+</p>
 </div>
-
-<script>
-  (function () {
-    var items = document.querySelectorAll(".gf-faq-item");
-    items.forEach(function (item) {
-      var q = item.querySelector(".gf-faq-q");
-      var a = item.querySelector(".gf-faq-a");
-      q.addEventListener("click", function () {
-        var isOpen = item.classList.contains("open");
-        items.forEach(function (i) {
-          i.classList.remove("open");
-          i.querySelector(".gf-faq-a").style.maxHeight = null;
-        });
-        if (!isOpen) {
-          item.classList.add("open");
-          a.style.maxHeight = a.scrollHeight + 20 + "px";
+</div> -->
+          <div class="gf-faq-item">
+            <button class="gf-faq-q">
+              We're a small clinic, not a big hospital — is this still for
+              us?<span class="plus">+</span>
+            </button>
+            <div class="gf-faq-a">
+              <p>
+                Yes. This is built around clinics and small hospitals just as
+                much as larger ones — the follow-up and acquisition problems
+                look nearly identical at every size, just at different scale.
+              </p>
+            </div>
+          </div>
+          <div class="gf-faq-item">
+            <button class="gf-faq-q">
+              What should we prepare before the call?<span class="plus">+</span>
+            </button>
+            <div class="gf-faq-a">
+              <p>
+                Nothing complicated — just a rough sense of your monthly OPD
+                volume and how enquiries are handled today. The more honest
+                you are about what's not working, the more useful the call
+                will be.
+              </p>
+            </div>
+          </div>
+          <div class="gf-faq-item">
+            <button class="gf-faq-q">
+              Why are you only taking a limited number of clinics right
+              now?<span class="plus">+</span>
+            </button>
+            <div class="gf-faq-a">
+              <p>
+                Because we're working hands-on with each founding partner to
+                get this right, not running it as a mass rollout yet. That
+                means real attention on your specific clinic — not a generic
+                playbook.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="gf-closer">
+      <div class="gf-container">
+        <div class="gf-kicker">Ready when you are
+        </div>
+        <h2>
+          Your OPD isn't short on patients. It's short on a system that brings
+          them to you.
+        </h2>
+        <p>
+          One honest 45-60-minutes conversation is enough to know if this is
+          worth pursuing further. No pressure, no pitch deck.
+        </p>
+        <a href="#open-popup" data-popup="flexiPoup_V0mQYX" data-ftbuttontype="popup" class="gf-btn gf-btn-lg">Book My
+          Free Strategy Call →</a>
+        <div class="gf-closer-tags">
+          <span>🔒 Your info stays private</span>
+          <span>📞 45-60-min personalised call</span>
+          <span>🚫 Zero obligation</span>
+          <span>💯 Zero hard selling</span>
+        </div>
+      </div>
+    </section>
+    <footer class="gf-footer">
+      <div class="gf-container">
+        <div class="gf-footer-legal">
+          The OPD Growth &amp; Recurring Revenue Framework™ is a service of
+          7Unit Softwares Private Limited.
+          <br />
+          CIN: U62013KA2023PTC175315 · GSTIN: 29AACCZ2228G1Z9 · Bangalore,
+          Karnataka, India
+          <br />
+          Contact: hello@7unit.tech ·
+          <a href="https://www.7unit.tech/privacy">Privacy Policy</a> ·
+          <a href="https://www.7unit.tech/terms">Terms of Use</a>
+          <br />
+          Results referenced on this page are industry research, not
+          guarantees of outcomes for any specific hospital or clinic. Actual
+          results depend on your practice's baseline, market, and execution.
+          <br />
+          © 2026 7Unit Softwares Private Limited
+        </div>
+      </div>
+    </footer>
+  </div>
+  <script>
+    (function () {
+      var items = document.querySelectorAll(".gf-faq-item");
+      items.forEach(function (item) {
+        var q = item.querySelector(".gf-faq-q");
+        var a = item.querySelector(".gf-faq-a");
+        q.addEventListener("click", function () {
+          var isOpen = item.classList.contains("open");
+          items.forEach(function (i) {
+            i.classList.remove("open");
+            i.querySelector(".gf-faq-a").style.maxHeight = null;
+          }
+          );
+          if (!isOpen) {
+            item.classList.add("open");
+            a.style.maxHeight = a.scrollHeight + 20 + "px";
+          }
         }
-      });
-    });
-  })();
-</script>
+        );
+      }
+      );
+    }
+    )();
+  </script>
+</body>
+
+</html>
